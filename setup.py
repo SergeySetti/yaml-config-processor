@@ -5,15 +5,15 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="yaml-config-processor",
-    version="0.1.0",
-    author="Your Name",
-    author_email="your.email@example.com",
+    version="0.1.1",
+    author="Serhii Setti",
+    author_email="serhii.setti@pm.me",
     description="Process YAML templates with JSON configurations",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/yourusername/yaml-config-processor",
+    url="https://github.com/SergeySetti/yaml-config-processor",
     project_urls={
-        "Bug Tracker": "https://github.com/yourusername/yaml-config-processor/issues",
+        "Bug Tracker": "https://github.com/SergeySetti/yaml-config-processor/issues",
     },
     classifiers=[
         "Programming Language :: Python :: 3",
