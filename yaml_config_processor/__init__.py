@@ -6,5 +6,10 @@ A package for processing configuration templates from YAML strings with JSON use
 
 from yaml_config_processor.processor import ConfigProcessor, TEMPLATE_META_SCHEMA
 
-__version__ = '0.1.1'
+try:
+    from yaml_config_processor._version import version as __version__
+except ImportError:
+    # Fallback for development mode
+    __version__ = "0.1.2"  # Keep your current version as fallback
+
 __all__ = ['ConfigProcessor', 'TEMPLATE_META_SCHEMA']

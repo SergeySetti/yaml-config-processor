@@ -24,7 +24,10 @@ TEMPLATE_META_SCHEMA = {
             "type": "string",
             "pattern": "^config\\.[a-zA-Z0-9_]+$"  # Must match "config.something"
         },
-        "command": {"type": "string"},
+        "command": {
+            "type": "string",
+            "enum": ["npx", "uvx"]
+        },
         "args": {"type": "array"},
         "env": {"type": "array"}
     }
