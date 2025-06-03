@@ -55,6 +55,11 @@ args:
 env:
   - name: API_KEY
     value: config.api_key
+description: |
+  This template defines the configuration schema and how to use the user-provided values.
+  The `config.` prefix is used to reference user configuration values.
+license: MIT
+owner: John Doe
 """
 
 # Define user configuration in JSON
