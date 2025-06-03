@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.3 (2025-05-15)
+-------------------
+- More fields added to the template validation logic.
+
 ## 0.1.2 (2025-05-12)
 
 -------------------

@@ -10,6 +10,6 @@ try:
     from yaml_config_processor._version import version as __version__
 except ImportError:
     # Fallback for development mode
-    __version__ = "0.1.2"  # Keep your current version as fallback
+    __version__ = "0.1.3"  # Keep your current version as fallback
 
 __all__ = ['ConfigProcessor', 'TEMPLATE_META_SCHEMA']
