@@ -29,7 +29,10 @@ TEMPLATE_META_SCHEMA = {
             "enum": ["npx", "uvx"]
         },
         "args": {"type": "array"},
-        "env": {"type": "array"}
+        "env": {"type": "array"},
+        "license": {"type": "string"},
+        "description": {"type": "string"},
+        "owner": {"type": "string"},
     }
 }
 
