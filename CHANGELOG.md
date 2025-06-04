@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.5 (2025-07-15)
+-------------------
+- Added support for additional YAML schema items.
+
 ## 0.1.4 (2025-07-02)
 -------------------
 - More fields added to the template validation logic.

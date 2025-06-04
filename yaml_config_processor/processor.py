@@ -8,9 +8,9 @@ import yaml
 # Schema for validating templates themselves
 TEMPLATE_META_SCHEMA = {
     "type": "object",
-    "required": ["configSchema", "service_name", "command", "args"],
+    "required": ["confi_schema", "service_name", "command", "args"],
     "properties": {
-        "configSchema": {
+        "confi_schema": {
             "type": "object",
             "required": ["type", "properties"],
             "properties": {
@@ -33,6 +33,8 @@ TEMPLATE_META_SCHEMA = {
         "license": {"type": "string"},
         "description": {"type": "string"},
         "owner": {"type": "string"},
+        "package": {"type": "string"},
+        "vendor": {"type": "string"},
     }
 }
 
