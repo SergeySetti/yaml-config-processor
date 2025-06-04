@@ -20,10 +20,6 @@ TEMPLATE_META_SCHEMA = {
             }
         },
         "service_name": {"type": "string"},
-        "user_id": {
-            "type": "string",
-            "pattern": "^config\\.[a-zA-Z0-9_]+$"  # Must match "config.something"
-        },
         "command": {
             "type": "string",
             "enum": ["npx", "uvx"]
