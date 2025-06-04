@@ -8,9 +8,9 @@ import yaml
 # Schema for validating templates themselves
 TEMPLATE_META_SCHEMA = {
     "type": "object",
-    "required": ["confi_schema", "service_name", "command", "args"],
+    "required": ["config_schema", "service_name", "command", "args"],
     "properties": {
-        "confi_schema": {
+        "config_schema": {
             "type": "object",
             "required": ["type", "properties"],
             "properties": {
@@ -89,7 +89,7 @@ class ConfigProcessor:
             ValueError: If a reference is invalid
         """
         # Get all defined properties in configSchema
-        schema_properties = set(template.get("configSchema", {}).get("properties", {}).keys())
+        schema_properties = set(template.get("config_schema", {}).get("properties", {}).keys())
 
         # Find all config references in the template
         references = self._find_config_references(template)
@@ -105,7 +105,7 @@ class ConfigProcessor:
 
             # Verify the property exists in the schema
             if prop not in schema_properties:
-                raise ValueError(f"Config reference '{ref}' does not match any property in configSchema")
+                raise ValueError(f"Config reference '{ref}' does not match any property in config_schema")
 
     def _find_config_references(self, obj: Any, refs: Optional[Set[str]] = None) -> Set[str]:
         """
@@ -129,7 +129,7 @@ class ConfigProcessor:
         elif isinstance(obj, dict):
             for key, value in obj.items():
                 # Skip the configSchema itself
-                if key != "configSchema":
+                if key != "config_schema":
                     self._find_config_references(value, refs)
 
         return refs
@@ -152,8 +152,8 @@ class ConfigProcessor:
             ValueError: If the configuration is invalid
             TypeError: If the input cannot be parsed as JSON
         """
-        if "configSchema" not in template:
-            raise ValueError("Template does not contain a configSchema")
+        if "config_schema" not in template:
+            raise ValueError("Template does not contain a config_schema")
 
         try:
             # Parse the user config if it's a JSON string
@@ -167,7 +167,7 @@ class ConfigProcessor:
                 user_config = user_config_json
 
             # Validate against the schema
-            jsonschema.validate(instance=user_config, schema=template["configSchema"])
+            jsonschema.validate(instance=user_config, schema=template["config_schema"])
 
             # Return as dict (JSON-compatible object)
             return user_config
@@ -207,8 +207,8 @@ class ConfigProcessor:
         result = deepcopy(template)
 
         # Replace configSchema with actual config
-        if "configSchema" in result:
-            del result["configSchema"]
+        if "config_schema" in result:
+            del result["config_schema"]
         result["config"] = user_config
 
         # Process all template values to substitute config references
@@ -254,10 +254,10 @@ class ConfigProcessor:
             TypeError: If template_yaml is not a string
         """
         template = self.validate_template(template_yaml)
-        schema = template.get("configSchema")
+        schema = template.get("config_schema")
 
         if not schema:
-            raise ValueError("Template does not contain a configSchema")
+            raise ValueError("Template does not contain a config_schema")
 
         return schema
 
