@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.5 (2025-07-15)
+## 0.1.6 (2025-07-16)
 -------------------
 - Added support for additional YAML schema items.
 
