@@ -224,19 +224,17 @@ class ConfigProcessor:
                     return user_config[prop]
                 return value
 
+            elif isinstance(value, dict) and "env" in value:
+                env_vars = value["env"]
+                if isinstance(env_vars, list):
+                    return {var["name"]: var["value"] for var in env_vars if "name" in var and "value" in var}
+                return value
+
             elif isinstance(value, list):
                 return [substitute_refs(item) for item in value]
 
             elif isinstance(value, dict):
                 return {k: substitute_refs(v) for k, v in value.items()}
-
-            # Convert `env` from [{'name': 'BRAVE_API_KEY', 'value': 'BSACX1dNw56h-D5WmJs2WVzdSSkDqjo'}] to { 'BRAVE_API_KEY': 'BSACX1dNw56h-D5WmJs2WVzdSSkDqjo', etc }
-            elif isinstance(value, dict) and "env" in value:
-                env_dict = {}
-                for env_var in value["env"]:
-                    if isinstance(env_var, dict) and "name" in env_var and "value" in env_var:
-                        env_dict[env_var["name"]] = substitute_refs(env_var["value"])
-                return env_dict
 
             return value
 

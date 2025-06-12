@@ -46,7 +46,6 @@ configSchema:
       format: uri
       description: Base URL for the service
 service_name: example-service
-user_id: config.userId
 command: run
 args:
   - --verbose
