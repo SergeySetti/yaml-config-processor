@@ -230,6 +230,14 @@ class ConfigProcessor:
             elif isinstance(value, dict):
                 return {k: substitute_refs(v) for k, v in value.items()}
 
+            # Convert `env` from [{'name': 'BRAVE_API_KEY', 'value': 'BSACX1dNw56h-D5WmJs2WVzdSSkDqjo'}] to { 'BRAVE_API_KEY': 'BSACX1dNw56h-D5WmJs2WVzdSSkDqjo', etc }
+            elif isinstance(value, dict) and "env" in value:
+                env_dict = {}
+                for env_var in value["env"]:
+                    if isinstance(env_var, dict) and "name" in env_var and "value" in env_var:
+                        env_dict[env_var["name"]] = substitute_refs(env_var["value"])
+                return env_dict
+
             return value
 
         # Process all values except the config itself
