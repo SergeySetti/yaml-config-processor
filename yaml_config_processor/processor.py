@@ -8,7 +8,7 @@ import yaml
 # Schema for validating templates themselves
 TEMPLATE_META_SCHEMA = {
     "type": "object",
-    "required": ["config_schema", "service_name", "command", "args"],
+    "required": ["config_schema", "server_name", "command", "args", "env"],
     "properties": {
         "config_schema": {
             "type": "object",
@@ -19,7 +19,7 @@ TEMPLATE_META_SCHEMA = {
                 "properties": {"type": "object"}
             }
         },
-        "service_name": {"type": "string"},
+        "server_name": {"type": "string"},
         "command": {
             "type": "string",
             "enum": ["npx", "uvx"]

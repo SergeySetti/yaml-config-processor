@@ -13,6 +13,6 @@ except ImportError:
     # the CI/CD Github Actions.
 
     # One and only version value setup is here and only here. CHANGELOG.md is optional.
-    __version__ = "0.2.10"
+    __version__ = "0.2.11"
 
 __all__ = ['ConfigProcessor', 'TEMPLATE_META_SCHEMA'] # That means that only these names will be imported when using `from yaml_config_processor import *`
