@@ -16,8 +16,7 @@ config_schema:
             format: uri
             description: Base URL for the service
 server_name: example-service
-user_id: config.userId
-command: run
+command: npx
 args:
     - --verbose
     - --endpoint

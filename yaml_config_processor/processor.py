@@ -222,7 +222,7 @@ class ConfigProcessor:
 
                 if prop in user_config:
                     return user_config[prop]
-                return value
+                return ""
 
             elif isinstance(value, dict) and "env" in value:
                 env_vars = value["env"]
